@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# Warehouse Management System (WMS)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Warehouse Management System (WMS) untuk cold storage yang dapat menampilkan data stok dan suhu ruang penyimpanan.
 
-Currently, two official plugins are available:
+## Struktur Proyek
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+warehouse-management-system/
+├── public/
+│   └── db.json
+├── src/
+│   ├── components/
+│   │   ├── AddInboundForm.tsx
+│   │   ├── Navbar.tsx
+│   │   └── RoomCard.tsx
+│   │   └── ToggleDarkMode.tsx
+│   ├── hooks/
+│   │   └── usePolling.ts
+│   ├── pages/
+│   │   ├── AddInbound.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── InventoryList.tsx
+│   ├── services/
+│   │   └── api.ts
+│   ├── store/
+│   │   └── inventoryStore.ts
+│   ├── types/
+│   │   └── index.ts
+│   ├── App.tsx
+│   └── main.tsx
+├── package.json
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Cara Menjalankan
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone & Install
+```bash
+git clone https://github.com/avsholeh/warehouse-management-system/
 ```
+```bash
+cd warehouse-management-system
+```
+```bash
+npm install
+```
+
+### 2. Jalankan Development Server
+```bash
+npm run dev
+```
+
+### 3. Jalankan Endpoint Server
+```bash
+npm run server
+```
+Akses di: http://localhost:8000
+
+## Alasan Desain Arsitektur
+
+1. Vite, React & TypeScript: Mempercepat proses development, build, hot reload dan didukung dengan type safety dari TypeScript.
+2. Chakra UI: UI yang konsisten dan mendukung dark mode.
+3. Zustand: State management yang ringan, dapat menyimpan data ke localStorage otomatis sehingga data tetap ada saat reload, UX lebih baik.
