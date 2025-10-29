@@ -2,6 +2,12 @@
 
 Warehouse Management System (WMS) untuk cold storage yang dapat menampilkan data stok dan suhu ruang penyimpanan.
 
+## Screenshot
+
+![Dashboard](public/preview-dashboard.png)
+
+![Inventory](public/preview-inventory.png)
+
 ## Struktur Proyek
 
 ```bash
